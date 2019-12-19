@@ -11,8 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameProject
 {
-    
-
+   
     public class GameState : State
     {
         Texture2D Hoofdpersonage_Texture;
@@ -59,7 +58,7 @@ namespace GameProject
             foreach (Blokje blok in level1.Blokjes)
                 if (blok != null)
                 {
-                    hoofdpersonage.CollisionTest(blok.collisionRectangle, 0,0);
+                    hoofdpersonage.CollisionTest(blok.collisionRectangle, 0,0); //nieuwe collision test (stabieler)
                 }
 
                     hoofdpersonage.Update(gameTime, geluidarray);
@@ -68,6 +67,11 @@ namespace GameProject
            
         }
 
+
+    
+
+        //==========OUDE COLLISION CODE======= (gravity = ok , personage valt van een blok wanneer hij er van af loopt, side collsions zijn glitchy)
+        //geen verantwoordelijkheid van gamestate => verhuist naar hoofdpersonage
 
         private void ColissionCheck()
         {
@@ -81,7 +85,7 @@ namespace GameProject
                 {
                     if (hoofdpersonage.collisionRectangle.Intersects(blok.collisionRectangle))
                     {
-                        // ================= LEFT CHECK =====================================
+                        // ================= LEFT CHECK N-OK =====================================
 
                         if ((hoofdpersonage.collisionRectangle.Left <= blok.collisionRectangle.Right) && (Keyboard.GetState().IsKeyDown(Keys.Left)))
                         {
@@ -93,7 +97,7 @@ namespace GameProject
 
 
 
-                        // ================= BOTTOM CHECK =====================================
+                        // ================= BOTTOM CHECK OK =====================================
                         if (hoofdpersonage.collisionRectangle.Bottom >= blok.collisionRectangle.Top)
                         {
                             hoofdpersonage.Velocity.Y = 0f;

@@ -11,6 +11,8 @@ namespace GameProject
     /// Bron : https://www.youtube.com/watch?v=l0WS5SvKdY4
     /// </summary>
 
+        //checkt boven, onder, links en rechts voor collisions, nog zonder er acties aan toe te wijzen.
+
     static class RectangleHelper
     {
         public static bool TouchTopOf(this Rectangle r1, Rectangle r2)

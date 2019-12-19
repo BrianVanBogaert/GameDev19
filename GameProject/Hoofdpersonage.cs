@@ -117,6 +117,9 @@ namespace GameProject
           // spritebatch.Draw(Texture, Positie, collisionRectangle, Color.White, 0, Vector2.One, 1f, flipeffect, 1);
         }
 
+
+        // ===================== NIEUWE COLLISION CODE =============================
+
         public void CollisionTest(Rectangle newRectangle, int xOffset, int yOffset)
         {
            
@@ -127,12 +130,13 @@ namespace GameProject
                 Velocity.Y = 0f;
                 SpringEnable = true;
                 }
-
-            if (!collisionRectangle.TouchTopOf(newRectangle))
+            else
             {
-                Velocity.Y = 1f;
                 SpringEnable = false;
+                Velocity.Y = 1;
             }
+
+          
 
 
             if (collisionRectangle.TouchLeftOf(newRectangle))
@@ -149,8 +153,7 @@ namespace GameProject
             {
                 Velocity.Y = 1f;
             }
-
-
+      
         }
 
     }
